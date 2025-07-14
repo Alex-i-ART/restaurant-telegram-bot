@@ -189,6 +189,8 @@ function updateCartItemQuantity(itemId, newQuantity) {
 
 // Render cart items
 function renderCartItems() {
+    cartItemsContainer.innerHTML = ''; // Очищаем контейнер
+    
     if (cart.length === 0) {
         cartItemsContainer.innerHTML = '<div class="empty-cart-message">Ваша корзина пуста</div>';
         checkoutButton.disabled = true;
@@ -197,7 +199,6 @@ function renderCartItems() {
     
     checkoutButton.disabled = false;
     
-    cartItemsContainer.innerHTML = '';
     cart.forEach(item => {
         const cartItemElement = document.createElement('div');
         cartItemElement.className = 'cart-item';
@@ -217,7 +218,7 @@ function renderCartItems() {
         cartItemsContainer.appendChild(cartItemElement);
     });
     
-    // Add event listeners to cart item controls
+    // Добавляем обработчики событий для новых элементов
     document.querySelectorAll('.decrease-quantity').forEach(button => {
         button.addEventListener('click', (e) => {
             const itemId = parseInt(e.target.getAttribute('data-id'));
@@ -302,7 +303,9 @@ function setupEventListeners() {
     
     // Checkout
     checkoutButton.addEventListener('click', () => {
-        // In a real app, you would send this data to your backend
+        if (cart.length === 0) return;
+        
+        // В реальном приложении здесь будет отправка данных на сервер
         const orderData = {
             items: cart,
             total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
