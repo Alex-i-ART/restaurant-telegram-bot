@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gourmet | Ресторан высокой кухни</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Gourmet Logo">
+                <h1>Gourmet</h1>
+            </div>
+            <div class="cart-icon" id="cartButton">
+                🛒 <span class="cart-count" id="cartCount">0</span>
+            </div>
+        </header>
+
+        <!-- Main Content (SPA Views) -->
+        <main class="app-main">
+            <!-- Home View -->
+            <div class="view" id="homeView">
+                <div class="hero-section">
+                    <h2>Добро пожаловать в Gourmet</h2>
+                    <p>Искусство вкуса в каждом блюде</p>
+                </div>
+                
+                <section class="menu-section">
+                    <h3>Наше меню</h3>
+                    <div class="categories">
+                        <button class="category-btn active" data-category="all">Все</button>
+                        <button class="category-btn" data-category="starters">Закуски</button>
+                        <button class="category-btn" data-category="main">Основное</button>
+                        <button class="category-btn" data-category="desserts">Десерты</button>
+                        <button class="category-btn" data-category="drinks">Напитки</button>
+                    </div>
+                    
+                    <div class="menu-items" id="menuItems">
+                        <!-- Menu items will be loaded here by JavaScript -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- Cart View -->
+            <div class="view hidden" id="cartView">
+                <div class="cart-header">
+                    <button class="back-button" id="backButton">← Назад</button>
+                    <h2>Ваш заказ</h2>
+                </div>
+                
+                <div class="cart-items" id="cartItems">
+                    <!-- Cart items will be loaded here -->
+                    <div class="empty-cart-message">
+                        Ваша корзина пуста
+                    </div>
+                </div>
+                
+                <div class="cart-summary">
+                    <div class="total">
+                        <span>Итого:</span>
+                        <span id="cartTotal">0 ₽</span>
+                    </div>
+                    <button class="checkout-button" id="checkoutButton">Оформить заказ</button>
+                </div>
+            </div>
+
+            <!-- Order Confirmation View -->
+            <div class="view hidden" id="orderConfirmationView">
+                <div class="confirmation-content">
+                    <div class="confirmation-icon">✓</div>
+                    <h2>Заказ оформлен!</h2>
+                    <p>Спасибо за ваш заказ. Мы уже начали его готовить.</p>
+                    <p>Номер вашего заказа: <strong id="orderNumber">#12345</strong></p>
+                    <button class="back-to-menu" id="backToMenuButton">Вернуться в меню</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
